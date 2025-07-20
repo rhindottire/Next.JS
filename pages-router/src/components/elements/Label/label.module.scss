@@ -1,0 +1,18 @@
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  display: block;
+  
+  &.required::after {
+    content: ' *';
+    color: var(--error);
+  }
+  
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
