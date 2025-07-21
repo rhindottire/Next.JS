@@ -1,0 +1,727 @@
+@import '@/styles/color.scss';
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  @media (prefers-color-scheme: dark) {
+    background: #000000;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}
+
+.content {
+  max-width: 600px;
+  text-align: center;
+  z-index: 10;
+  animation: fadeInUp 0.8s ease-out;
+
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    order: 2;
+  }
+}
+
+.errorCode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 8rem;
+  font-weight: 900;
+  color: #000000;
+  letter-spacing: -0.05em;
+
+  @media (prefers-color-scheme: dark) {
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 4rem;
+  }
+
+  .four, .zero {
+    display: inline-block;
+    animation: bounce 2s infinite;
+    
+    &:nth-child(1) {
+      animation-delay: 0s;
+    }
+    
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+      opacity: 0.7;
+    }
+    
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  }
+}
+
+.message {
+  margin-bottom: 3rem;
+
+  .title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+
+    @media (prefers-color-scheme: dark) {
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.75rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .description {
+    font-size: 1rem;
+    color: #737373;
+    line-height: 1.6;
+    margin-bottom: 0;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (prefers-color-scheme: dark) {
+      color: #a3a3a3;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 140px;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  font-family: inherit;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.primary {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+
+    &:hover {
+      background: #262626;
+      border-color: #262626;
+    }
+
+    &:active {
+      background: #404040;
+      border-color: #404040;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+
+      &:hover {
+        background: #f5f5f5;
+        border-color: #f5f5f5;
+      }
+
+      &:active {
+        background: #e5e5e5;
+        border-color: #e5e5e5;
+      }
+    }
+  }
+
+  &.secondary {
+    background: #ffffff;
+    color: #000000;
+    border-color: #e5e5e5;
+
+    &:hover {
+      background: #f5f5f5;
+      border-color: #d4d4d4;
+    }
+
+    &:active {
+      background: #e5e5e5;
+      border-color: #a3a3a3;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background: #000000;
+      color: #ffffff;
+      border-color: #262626;
+
+      &:hover {
+        background: #171717;
+        border-color: #404040;
+      }
+
+      &:active {
+        background: #262626;
+        border-color: #525252;
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid #000000;
+    outline-offset: 2px;
+
+    @media (prefers-color-scheme: dark) {
+      outline-color: #ffffff;
+    }
+  }
+}
+
+.suggestions {
+  color: #000000;
+
+  @media (prefers-color-scheme: dark) {
+    color: #ffffff;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #737373;
+    font-weight: 500;
+
+    @media (prefers-color-scheme: dark) {
+      color: #a3a3a3;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  .link {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.15s ease;
+    position: relative;
+
+    @media (prefers-color-scheme: dark) {
+      color: #ffffff;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.15s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+.illustration {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 350px;
+  height: 350px;
+  z-index: 1;
+
+  @media (max-width: 1024px) {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    order: 1;
+    margin-bottom: 2rem;
+    width: 250px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+}
+
+.astronaut {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: astronautFloat 6s ease-in-out infinite;
+}
+
+// Improved Astronaut Design
+.helmet {
+  width: 80px;
+  height: 80px;
+  background: #000000;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto 8px;
+  box-shadow: inset 0 0 0 4px #ffffff;
+
+  @media (prefers-color-scheme: dark) {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 4px #000000;
+  }
+
+  // Visor
+  &::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 56px;
+    height: 56px;
+    background: #ffffff;
+    border-radius: 50%;
+    border: 2px solid #e5e5e5;
+
+    @media (prefers-color-scheme: dark) {
+      background: #000000;
+      border-color: #404040;
+    }
+  }
+
+  // Reflection
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    width: 15px;
+    height: 20px;
+    background: #000000;
+    border-radius: 50%;
+    opacity: 0.3;
+
+    @media (prefers-color-scheme: dark) {
+      background: #ffffff;
+    }
+  }
+}
+
+.body {
+  width: 60px;
+  height: 70px;
+  background: #000000;
+  border-radius: 30px 30px 20px 20px;
+  margin: 0 auto;
+  position: relative;
+
+  @media (prefers-color-scheme: dark) {
+    background: #ffffff;
+  }
+
+  // Chest panel
+  &::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 25px;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #e5e5e5;
+
+    @media (prefers-color-scheme: dark) {
+      background: #000000;
+      border-color: #404040;
+    }
+  }
+
+  // Control buttons
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #000000;
+    border-radius: 50%;
+    box-shadow: 
+      8px 0 0 #000000,
+      -8px 0 0 #000000,
+      0 8px 0 #000000;
+
+    @media (prefers-color-scheme: dark) {
+      background: #ffffff;
+      box-shadow: 
+        8px 0 0 #ffffff,
+        -8px 0 0 #ffffff,
+        0 8px 0 #ffffff;
+    }
+  }
+}
+
+.arms {
+  position: absolute;
+  top: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 20px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 12px;
+    background: #000000;
+    border-radius: 15px;
+
+    @media (prefers-color-scheme: dark) {
+      background: #ffffff;
+    }
+  }
+
+  &::before {
+    left: -5px;
+    transform: rotate(-25deg);
+    transform-origin: right center;
+  }
+
+  &::after {
+    right: -5px;
+    transform: rotate(25deg);
+    transform-origin: left center;
+  }
+}
+
+// Gloves
+.arms::before {
+  box-shadow: -25px 8px 0 -15px #000000;
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: -25px 8px 0 -15px #ffffff;
+  }
+}
+
+.arms::after {
+  box-shadow: 25px 8px 0 -15px #000000;
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: 25px 8px 0 -15px #ffffff;
+  }
+}
+
+.legs {
+  position: absolute;
+  top: 145px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 40px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 35px;
+    background: #000000;
+    border-radius: 15px;
+
+    @media (prefers-color-scheme: dark) {
+      background: #ffffff;
+    }
+  }
+
+  &::before {
+    left: 8px;
+  }
+
+  &::after {
+    right: 8px;
+  }
+}
+
+// Boots
+.legs::before {
+  box-shadow: 0 30px 0 -20px #000000;
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: 0 30px 0 -20px #ffffff;
+  }
+}
+
+.legs::after {
+  box-shadow: 0 30px 0 -20px #000000;
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: 0 30px 0 -20px #ffffff;
+  }
+}
+
+.jetpack {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 50px;
+  background: #000000;
+  border-radius: 20px 20px 10px 10px;
+  z-index: -1;
+
+  @media (prefers-color-scheme: dark) {
+    background: #ffffff;
+  }
+
+  // Jetpack details
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 15px 0 #ffffff;
+
+    @media (prefers-color-scheme: dark) {
+      background: #000000;
+      box-shadow: 0 15px 0 #000000;
+    }
+  }
+
+  // Flame
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 20px solid #737373;
+    animation: jetFlame 1s ease-in-out infinite alternate;
+
+    @media (prefers-color-scheme: dark) {
+      border-top-color: #a3a3a3;
+    }
+  }
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #000000;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+
+  @media (prefers-color-scheme: dark) {
+    background: #ffffff;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 7px;
+    height: 7px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+
+    @media (prefers-color-scheme: dark) {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+// Responsive scaling for astronaut
+@media (max-width: 1024px) {
+  .astronaut {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+@media (max-width: 768px) {
+  .astronaut {
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .astronaut {
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes astronautFloat {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -52%) rotate(-1deg);
+  }
+  50% {
+    transform: translate(-50%, -48%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -52%) rotate(1deg);
+  }
+}
+
+@keyframes jetFlame {
+  0% {
+    border-top-width: 20px;
+    opacity: 1;
+  }
+  100% {
+    border-top-width: 25px;
+    opacity: 0.7;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .errorCode .four,
+  .errorCode .zero,
+  .astronaut,
+  .jetpack::after,
+  .star {
+    animation: none;
+  }
+}

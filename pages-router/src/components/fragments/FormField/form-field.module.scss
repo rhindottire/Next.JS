@@ -1,7 +1,7 @@
 .formField {
   border: none;
   padding: 0;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.5rem 0;
   animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   
   &:nth-child(1) { animation-delay: 0.1s; }
@@ -25,58 +25,64 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--muted-foreground);
+  width: 1rem;
+  height: 1rem;
+  color: #737373;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 3;
+  z-index: 1;
+  
+  @media (prefers-color-scheme: dark) {
+    color: #a3a3a3;
+  }
 }
 
 .leftIcon {
-  left: 1rem;
+  left: 0.75rem;
 }
 
 .rightIcon {
-  right: 1rem;
+  right: 0.75rem;
 }
 
 .hasLeftIcon {
-  padding-left: 3rem !important;
+  padding-left: 2.5rem !important;
 }
 
 .hasRightIcon {
-  padding-right: 3rem !important;
+  padding-right: 2.5rem !important;
 }
 
 // Enhanced focus state for icons
 .inputWrapper:focus-within {
   .leftIcon,
   .rightIcon {
-    color: var(--foreground);
-    transform: scale(1.1);
+    color: #000000;
+    
+    @media (prefers-color-scheme: dark) {
+      color: #ffffff;
+    }
   }
 }
 
 .error {
-  border-color: #ff6b6b !important;
+  border-color: #dc2626 !important;
   background: 
     linear-gradient(135deg, 
-      rgba(255, 107, 107, 0.1) 0%, 
-      rgba(255, 107, 107, 0.05) 100%
+      rgba(220, 38, 38, 0.1) 0%, 
+      rgba(220, 38, 38, 0.05) 100%
     ) !important;
   
   &:focus {
-    border-color: #ff5252 !important;
+    border-color: #dc2626 !important;
     box-shadow: 
-      0 0 0 3px rgba(255, 107, 107, 0.2),
-      0 10px 25px rgba(255, 107, 107, 0.1) !important;
+      0 0 0 2px rgba(220, 38, 38, 0.1) !important;
   }
 }
 
 .errorMessage {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
   font-size: 0.875rem;
-  color: #ff6b6b;
+  color: #dc2626;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -84,6 +90,8 @@
   
   svg {
     flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
     animation: errorPulse 1s ease-in-out;
   }
 }
@@ -91,7 +99,7 @@
 .required {
   &::after {
     content: ' *';
-    color: #ff6b6b;
+    color: #dc2626;
     font-weight: 600;
   }
 }

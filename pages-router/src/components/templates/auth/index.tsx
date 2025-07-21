@@ -1,4 +1,7 @@
+"use client"
+
 import type React from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import styles from "./auth-template.module.scss"
 
@@ -14,35 +17,95 @@ interface AuthTemplateProps {
 }
 
 const AuthTemplate = ({ title, subtitle, children, footerText, footerLink }: AuthTemplateProps) => {
+  const [stars, setStars] = useState<
+    Array<{
+      id: number
+      top: string
+      left: string
+      size: string
+      delay: string
+    }>
+  >([])
+
+  useEffect(() => {
+    // Generate realistic night sky stars
+    const generateStars = () => {
+      const starArray = []
+
+      // Main stars (bright and visible)
+      for (let i = 0; i < 50; i++) {
+        const sizes = ["small", "medium", "large", "bright"]
+        const randomSize = sizes[Math.floor(Math.random() * sizes.length)]
+
+        starArray.push({
+          id: i,
+          top: `${Math.random() * 70}%`, // Keep stars in upper 70% of sky
+          left: `${Math.random() * 100}%`,
+          size: randomSize,
+          delay: `${Math.random() * 6}s`,
+        })
+      }
+
+      // Distant stars (tiny and dim)
+      for (let i = 50; i < 120; i++) {
+        starArray.push({
+          id: i,
+          top: `${Math.random() * 80}%`,
+          left: `${Math.random() * 100}%`,
+          size: "tiny distant",
+          delay: `${Math.random() * 10}s`,
+        })
+      }
+
+      // Star clusters (small grouped stars)
+      for (let i = 120; i < 180; i++) {
+        // Create clusters around certain areas
+        const clusterCenterX = Math.random() * 100
+        const clusterCenterY = Math.random() * 60
+
+        starArray.push({
+          id: i,
+          top: `${clusterCenterY + (Math.random() - 0.5) * 15}%`,
+          left: `${clusterCenterX + (Math.random() - 0.5) * 15}%`,
+          size: "tiny cluster",
+          delay: `${Math.random() * 4}s`,
+        })
+      }
+
+      setStars(starArray)
+    }
+
+    generateStars()
+  }, [])
+
   return (
     <main className={styles.authMain}>
-      {/* Animated background particles */}
-      <div className={styles.particleContainer}>
-        {Array.from({ length: 50 }).map((_, i) => (
+      {/* Milky Way Background */}
+      <div className={styles.milkyWay} />
+
+      {/* Night Sky Stars */}
+      <div className={styles.nightSkyContainer}>
+        {stars.map((star) => (
           <div
-            key={i}
-            className={styles.particle}
+            key={star.id}
+            className={`${styles.star} ${star.size
+              .split(" ")
+              .map((s) => styles[s])
+              .join(" ")}`}
             style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 20}s`,
-              animationDuration: `${15 + Math.random() * 10}s`,
+              top: star.top,
+              left: star.left,
+              animationDelay: star.delay,
             }}
           />
         ))}
       </div>
 
-      {/* Morphing background shapes */}
-      <div className={styles.backgroundShapes}>
-        <div className={styles.shape1}></div>
-        <div className={styles.shape2}></div>
-        <div className={styles.shape3}></div>
-      </div>
+      {/* Subtle Cloud Layer */}
+      <div className={styles.cloudLayer} />
 
       <section className={styles.authContainer}>
         <article className={styles.authCard}>
-          {/* Holographic border effect */}
-          <div className={styles.holographicBorder}></div>
-
           <header className={styles.authHeader}>
             <h1 className={styles.authTitle}>{title}</h1>
             {subtitle && <p className={styles.authSubtitle}>{subtitle}</p>}

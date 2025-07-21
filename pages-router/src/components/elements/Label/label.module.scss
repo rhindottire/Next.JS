@@ -1,14 +1,18 @@
 .label {
   font-size: 0.875rem;
   font-weight: 500;
-  line-height: 1;
-  color: var(--foreground);
+  line-height: 1.25rem;
+  color: #000000;
   margin-bottom: 0.5rem;
   display: block;
   
+  @media (prefers-color-scheme: dark) {
+    color: #ffffff;
+  }
+  
   &.required::after {
     content: ' *';
-    color: var(--error);
+    color: #dc2626;
   }
   
   &.disabled {
